@@ -41,23 +41,13 @@ jobs:
     environment:
       name: 'Production'
       url: ${{ steps.deploy-to-webapp.outputs.webapp-url }}
-    permissions:
-      id-token: write #This is required for requesting the JWT
-      contents: read #This is required for actions/checkout
-
+    
     steps:
       - name: Download artifact from build job
         uses: actions/download-artifact@v4
         with:
           name: .net-app
       
-      - name: Login to Azure
-        uses: azure/login@v2
-        with:
-          client-id: ${{ secrets.AZUREAPPSERVICE_CLIENTID_58D30C50EEC14D96A01A7A46D539F504 }}
-          tenant-id: ${{ secrets.AZUREAPPSERVICE_TENANTID_5E520BD974964800BF1CB4523737A801 }}
-          subscription-id: ${{ secrets.AZUREAPPSERVICE_SUBSCRIPTIONID_25603DF4BC95467AB4CB59ED11A38631 }}
-
       - name: Deploy to Azure Web App
         id: deploy-to-webapp
         uses: azure/webapps-deploy@v3
@@ -65,4 +55,4 @@ jobs:
           app-name: 'FormularConcurs'
           slot-name: 'Production'
           package: .
-          
+          publish-profile: ${{ secrets.AZUREAPPSERVICE_PUBLISHPROFILE_B0B976F7940E4AAF84F55B667F4C777F }}
