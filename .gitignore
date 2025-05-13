@@ -1,0 +1,38 @@
+## Build results
+bin/
+obj/
+out/
+
+## User-specific files
+*.user
+*.suo
+*.userosscache
+*.sln.docstates
+
+## VS for Mac
+.vscode/
+.idea/
+
+## OS files
+.DS_Store
+*.swp
+
+## Publish
+*.Publish.xml
+
+## Logs
+*.log
+
+## Dotnet artifacts
+project.lock.json
+project.fragment.lock.json
+artifacts/
+
+## Temporary files
+tmp/
+*.tmp
+*.bak
+
+## Rider
+.idea/
+*.sln.iml
